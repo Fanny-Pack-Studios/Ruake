@@ -3,7 +3,7 @@ extends Object
 var scene
 var editor_plugin
 
-func _init(_scene, _editor_plugin = null):
+func _init(_scene,_editor_plugin = null):
 	scene = _scene
 	editor_plugin = _editor_plugin
 
@@ -17,15 +17,15 @@ func add_node_to_tree_item(root_node, node, tree_item, tree, condition, hide_non
 	
 	if node_eligibility.selectable:
 		tree_item.set_metadata(0, node)
-		tree_item.set_custom_color(0, Color.chartreuse)
+		tree_item.set_custom_color(0, Color.CHARTREUSE)
 		tree_item.set_selectable(0, true)
 		tree_item.set_collapsed(not node_eligibility.has_selectable_child)
 	elif node_eligibility.has_selectable_child:
-		tree_item.set_custom_color(0, Color.aquamarine)
+		tree_item.set_custom_color(0, Color.AQUAMARINE)
 		tree_item.set_selectable(0, false)
 		tree_item.set_collapsed(false)
 	else:
-		tree_item.set_custom_color(0, Color.gray)
+		tree_item.set_custom_color(0, Color.GRAY)
 		tree_item.set_selectable(0, false)
 		tree_item.set_collapsed(true)
 		if(hide_non_eligible):
@@ -51,35 +51,20 @@ func _node_has_selectable_child(node, condition):
 			return true
 	return false
 
-func icon(node) -> Texture:
+func icon(node) -> Texture2D:
 	var custom_icon = _custom_icon_or_null(node)
 	if(custom_icon):
 		return custom_icon
 	else:
 		return _builtin_icon(node)
 
-func _builtin_icon(node) -> Texture:
+func _builtin_icon(node) -> Texture2D:
 	if not editor_plugin:
 		return null
 
 	var gui = editor_plugin.get_editor_interface().get_base_control()
 	return gui.get_icon(node.get_class(), "EditorIcons")
 
-func _custom_icon_or_null(node) -> Texture:
-	var script_class_name = _script_class_name(node)
-	var script_icon = ProjectSettings.get_setting("_global_script_class_icons").get(script_class_name)
-	if(not script_icon):
-		return null
-
-	return load(script_icon) as Texture
-
-func _script_class_name(node):
-	var script = node.get_script()
-	if(not script):
-		return null
-	var filepath = script.get_path()
-
-	var script_classes = ProjectSettings.get_setting("_global_script_classes")
-	for a_class in script_classes:
-		if a_class.path == filepath:
-			return a_class.class
+func _custom_icon_or_null(node) -> Texture2D:
+	# TODO: figure out how to do this in godot 4
+	return null

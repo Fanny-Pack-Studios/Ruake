@@ -16,8 +16,8 @@ func _physics_process(_delta):
 
 
 func _create_ruake():
-	ruake_menu = Ruake.instance()
-	ruake_menu.connect("history_changed", self, "ruake_history_changed")
+	ruake_menu = Ruake.instantiate()
+	ruake_menu.connect("history_changed",Callable(self,"ruake_history_changed"))
 
 
 func toggle_ruake():

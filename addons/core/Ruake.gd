@@ -34,8 +34,8 @@ func _ready():
 	prompt.text = expression
 	object = _root()
 	self_label.text = object.to_string()
-	prompt.connect("up", self, "go_up_in_history")
-	prompt.connect("down", self, "go_down_in_history")
+	prompt.connect("up",Callable(self,"go_up_in_history"))
+	prompt.connect("down",Callable(self,"go_down_in_history"))
 	grab_focus()
 	_update_scene_tree()
 
@@ -70,7 +70,7 @@ func set_variable(name, value):
 
 
 func go_up_in_history():
-	if not history.empty():
+	if not history.is_empty():
 		if not scrolling_history:
 			history_idx = 0
 			scrolling_history = true
@@ -80,7 +80,7 @@ func go_up_in_history():
 
 
 func go_down_in_history():
-	if not history.empty():
+	if not history.is_empty():
 		if not scrolling_history:
 			history_idx = 0
 			scrolling_history = true
@@ -121,7 +121,7 @@ func execute(a_prompt):
 			Evaluation.Failure
 		)
 
-	return RuakeExpression.for(object, a_prompt).execute_in(self)
+	return RuakeExpression.for_prompt(object, a_prompt).execute_in(self)
 
 
 func _on_LineEdit_text_changed(new_text):
@@ -168,7 +168,7 @@ class RuakeExpression:
 		)
 		return assignment_regex
 
-	static func for(object, prompt):
+	static func for_prompt(object, prompt):
 		var assignment_regex = assignment_regex()
 		var assignment_regex_match = assignment_regex.search(prompt)
 		var reassignment_regex = reassignment_regex()
@@ -270,7 +270,7 @@ class RuakeGodotExpression:
 	var object
 	var prompt
 
-	func _init(_object, _prompt):
+	func _init(_object,_prompt):
 		object = _object
 		prompt = _prompt
 
@@ -333,16 +333,16 @@ class Evaluation:
 		print("Result value: ", result_value)
 
 	func write_in(text_label):
-		text_label.bbcode_text += str("> ", prompt)
-		text_label.bbcode_text += "\n"
+		text_label.text += str("> ", prompt)
+		text_label.text += "\n"
 		match result_success_state:
 			Success:
-				text_label.bbcode_text += str(result_value)
+				text_label.text += str(result_value)
 			Failure:
-				text_label.bbcode_text += str(
+				text_label.text += str(
 					"[color=red]", result_value, "[/color]"
 				)
-		text_label.bbcode_text += "\n"
+		text_label.text += "\n"
 
 
 class NoFilter:

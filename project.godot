@@ -6,21 +6,12 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
-
-_global_script_classes=[ {
-"base": "Object",
-"class": "SyntaxSugarer",
-"language": "GDScript",
-"path": "res://addons/core/syntax_sugarer.gd"
-} ]
-_global_script_class_icons={
-"SyntaxSugarer": ""
-}
+config_version=5
 
 [application]
 
 config/name="Ruake"
+config/features=PackedStringArray("4.0")
 config/icon="res://icon.png"
 
 [gui]
