@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=2 format=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.243137, 0.235294, 0.282353, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0, 0, 0, 1 )
+
+[resource]
+Label/fonts/font = null
+Label/styles/normal = SubResource( 1 )
+LineEdit/fonts/font = null
+RichTextLabel/fonts/normal_font = null
