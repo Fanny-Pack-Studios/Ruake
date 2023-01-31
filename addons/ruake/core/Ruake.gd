@@ -14,7 +14,6 @@ var scene_tree
 var self_label
 var filter_text = ""
 var filter_exact_match = false
-var proximity_to_runa_filter = NoFilter.new()
 var variables = {}
 
 
@@ -56,7 +55,6 @@ func _update_scene_tree():
 		filters.push_front(NameExactlyMatches.new(filter_text))
 	else:
 		filters.push_front(NameContains.new(filter_text))
-	filters.push_front(proximity_to_runa_filter)
 	var filter = And.new(filters)
 	RmScene.new(_root()).insert_into_tree(scene_tree, filter, true)
 
@@ -385,7 +383,3 @@ class And:
 				return false
 		return true
 
-
-func _on_CloseToRunaFilter_filter_changed(new_filter):
-	proximity_to_runa_filter = new_filter
-	_update_scene_tree()

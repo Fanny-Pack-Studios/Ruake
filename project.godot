@@ -14,6 +14,14 @@ config/name="Ruake"
 config/features=PackedStringArray("4.0")
 config/icon="res://icon.png"
 
+[autoload]
+
+RuakeLayer="*res://addons/ruake/core/RuakeLayer.tscn"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/ruake/plugin.cfg")
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true

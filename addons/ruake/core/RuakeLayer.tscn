@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dn8rjsyxnwqmi"]
+
+[ext_resource type="Script" path="res://addons/ruake/core/RuakeLayer.gd" id="1_a6cly"]
+
+[node name="RuakeLayer" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_a6cly")
