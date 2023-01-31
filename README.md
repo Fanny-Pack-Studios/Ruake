@@ -1,3 +1,5 @@
+:x: Currently only the godot-branch is working :x:, this branch is intended for Godot 3.x
+
 # Ruake
 
 Allows a terminal that runs gdscript to be opened while the game is running.
