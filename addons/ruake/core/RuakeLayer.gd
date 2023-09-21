@@ -6,7 +6,6 @@ const Ruake = preload("./Ruake.tscn")
 
 func _ready():
 	_create_ruake()
-	# TODO: recuperar historial
 	ruake_menu.history = []
 
 

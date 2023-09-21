@@ -8,3 +8,9 @@ export_presets.cfg
 .mono/
 data_*/
 .godot/
+
+# Godot 4+ specific ignores
+.godot/
+
+# Imported translations (automatically generated from CSV files)
+*.translation
