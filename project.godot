@@ -8,11 +8,15 @@
 
 config_version=5
 
+[addons]
+
+ruake/toggle_ruake_action="toggle_ruake"
+ruake/blender/enabled=true
+
 [application]
 
 config/name="Ruake"
 config/features=PackedStringArray("4.1")
-config/icon="res://icon.png"
 
 [autoload]
 
@@ -22,9 +26,21 @@ RuakeLayer="*res://addons/ruake/core/RuakeLayer.tscn"
 
 enabled=PackedStringArray("res://addons/ruake/plugin.cfg")
 
+[filesystem]
+
+import/blender/enabled=false
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+
+[input]
+
+toggle_ruake={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":true,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":49,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
 
 [physics]
 

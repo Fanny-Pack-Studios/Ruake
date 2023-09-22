@@ -1,7 +1,21 @@
+class_name Ruake
 extends Control
+
+const SETTING_PATHS = {
+	TOGGLE_ACTION = "addons/ruake/toggle_ruake_action",
+	LAYER = "addons/ruake/layer",
+	PAUSES_WHILE_OPENED = "addons/ruake/pauses_tree_while_opened"
+}
+
+const SETTINGS_WITH_DEFAULTS = {
+	SETTING_PATHS.TOGGLE_ACTION: "toggle_ruake",
+	SETTING_PATHS.LAYER: 0,
+	SETTING_PATHS.PAUSES_WHILE_OPENED: true
+}
 
 signal history_changed(complete_history)
 signal expression_changed(string)
+
 const RmScene = preload("./rm_scene.gd")
 var object
 var prompt
@@ -26,10 +40,10 @@ func variables_values():
 
 
 func _ready():
-	rich_text_label = $HBoxContainer/VBoxContainer/RichTextLabel
-	prompt = $HBoxContainer/VBoxContainer/HBoxContainer/LineEdit
-	scene_tree = $HBoxContainer/VBoxContainer2/Tree
-	self_label = $HBoxContainer/VBoxContainer/HBoxContainer/SelfObject
+	rich_text_label = %RichTextLabel
+	prompt = %Prompt
+	scene_tree = %SceneTree
+	self_label = %SelfLabel
 	prompt.text = expression
 	object = _root()
 	self_label.text = object.to_string()

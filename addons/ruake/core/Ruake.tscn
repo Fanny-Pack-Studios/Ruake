@@ -29,6 +29,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -41,12 +42,14 @@ selection_enabled = true
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="SelfObject" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="SelfLabel" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.2
 
-[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Prompt" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -76,14 +79,15 @@ size_flags_horizontal = 3
 layout_mode = 2
 text = "Exact Match"
 
-[node name="Tree" type="Tree" parent="HBoxContainer/VBoxContainer2"]
+[node name="SceneTree" type="Tree" parent="HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[connection signal="text_changed" from="HBoxContainer/VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_LineEdit_text_changed"]
-[connection signal="text_submitted" from="HBoxContainer/VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_LineEdit_text_entered"]
+[connection signal="text_changed" from="HBoxContainer/VBoxContainer/HBoxContainer/Prompt" to="." method="_on_LineEdit_text_changed"]
+[connection signal="text_submitted" from="HBoxContainer/VBoxContainer/HBoxContainer/Prompt" to="." method="_on_LineEdit_text_entered"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer2/Button" to="." method="_update_scene_tree"]
 [connection signal="text_changed" from="HBoxContainer/VBoxContainer2/PanelContainer/HBoxContainer/SearchPrompt" to="." method="_on_SearchPrompt_text_changed"]
 [connection signal="toggled" from="HBoxContainer/VBoxContainer2/PanelContainer/HBoxContainer/ExactSearchMatch" to="." method="_on_ExactSearchMatch_toggled"]
-[connection signal="item_selected" from="HBoxContainer/VBoxContainer2/Tree" to="." method="_on_Tree_item_selected"]
+[connection signal="item_selected" from="HBoxContainer/VBoxContainer2/SceneTree" to="." method="_on_Tree_item_selected"]
