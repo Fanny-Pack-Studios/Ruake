@@ -11,7 +11,6 @@ config_version=5
 [addons]
 
 ruake/toggle_ruake_action="toggle_ruake"
-ruake/blender/enabled=true
 
 [application]
 
