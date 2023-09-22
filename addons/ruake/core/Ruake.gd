@@ -16,6 +16,12 @@ const SETTINGS_WITH_DEFAULTS = {
 signal history_changed(complete_history)
 signal expression_changed(string)
 
+static func toggle_action_name() -> String:
+	return ProjectSettings.get_setting(
+		SETTING_PATHS.TOGGLE_ACTION,
+		SETTINGS_WITH_DEFAULTS[SETTING_PATHS.TOGGLE_ACTION]
+	)
+
 const RmScene = preload("./rm_scene.gd")
 var object
 var prompt

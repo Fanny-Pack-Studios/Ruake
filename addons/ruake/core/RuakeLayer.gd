@@ -5,8 +5,7 @@ const RuakeScene = preload("./Ruake.tscn")
 var action_name
 
 func _ready():
-	var configured_action_name = \
-		ProjectSettings.get_setting(Ruake.SETTING_PATHS.TOGGLE_ACTION)
+	var configured_action_name := Ruake.toggle_action_name()
 	if InputMap.has_action(configured_action_name):
 		action_name = configured_action_name
 	_create_ruake()
