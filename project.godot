@@ -9,23 +9,50 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Control",
+"class": "Ruake",
+"language": "GDScript",
+"path": "res://addons/ruake/core/Ruake.gd"
+}, {
 "base": "Object",
 "class": "SyntaxSugarer",
 "language": "GDScript",
-"path": "res://addons/core/syntax_sugarer.gd"
+"path": "res://addons/ruake/core/syntax_sugarer.gd"
 } ]
 _global_script_class_icons={
+"Ruake": "",
 "SyntaxSugarer": ""
 }
+
+[addons]
+
+ruake/layer=3
+ruake/pauses_tree_while_opened=false
 
 [application]
 
 config/name="Ruake"
 config/icon="res://icon.png"
 
+[autoload]
+
+RuakeLayer="*res://addons/ruake/core/RuakeLayer.tscn"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/ruake/plugin.cfg" )
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+
+[input]
+
+toggle_ruake={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":true,"meta":false,"command":true,"pressed":false,"scancode":0,"physical_scancode":49,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [physics]
 

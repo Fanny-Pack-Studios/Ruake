@@ -1,7 +1,36 @@
+class_name Ruake
 extends Control
+
+const SETTING_PATHS = {
+	TOGGLE_ACTION = "addons/ruake/toggle_ruake_action",
+	LAYER = "addons/ruake/layer",
+	PAUSES_WHILE_OPENED = "addons/ruake/pauses_tree_while_opened"
+}
+
+const SETTINGS_WITH_DEFAULTS = {
+	SETTING_PATHS.TOGGLE_ACTION: "toggle_ruake",
+	SETTING_PATHS.LAYER: 0,
+	SETTING_PATHS.PAUSES_WHILE_OPENED: true
+}
 
 signal history_changed(complete_history)
 signal expression_changed(string)
+
+static func get_setting_or_default(setting_path):
+	if(ProjectSettings.has_setting(setting_path)):
+		return ProjectSettings.get_setting(setting_path)
+	else:
+		return SETTINGS_WITH_DEFAULTS[setting_path]
+
+static func toggle_action_name() -> String:
+	return get_setting_or_default(SETTING_PATHS.TOGGLE_ACTION)
+
+static func ruake_layer() -> int:
+	return get_setting_or_default(SETTING_PATHS.LAYER)
+
+static func pauses_while_opened() -> bool:
+	return get_setting_or_default(SETTING_PATHS.PAUSES_WHILE_OPENED)
+
 const RmScene = preload("./rm_scene.gd")
 var object
 var prompt
