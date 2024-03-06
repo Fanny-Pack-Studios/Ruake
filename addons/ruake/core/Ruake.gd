@@ -55,11 +55,10 @@ func _ready():
 	self_label.text = object.to_string()
 	prompt.connect("up",Callable(self,"go_up_in_history"))
 	prompt.connect("down",Callable(self,"go_down_in_history"))
-	grab_focus()
-	_update_scene_tree()
+	be_focused()
 
 
-func grab_focus():
+func be_focused():
 	_update_scene_tree()
 	prompt.grab_focus()
 

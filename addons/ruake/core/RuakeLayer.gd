@@ -31,4 +31,4 @@ func toggle_ruake():
 	else:
 		add_child(ruake_menu)
 		get_tree().paused = true
-		ruake_menu.grab_focus()
+		ruake_menu.be_focused()
