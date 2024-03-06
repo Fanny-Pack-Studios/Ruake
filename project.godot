@@ -15,7 +15,7 @@ ruake/toggle_ruake_action="toggle_ruake"
 [application]
 
 config/name="Ruake"
-config/features=PackedStringArray("4.1")
+config/features=PackedStringArray("4.2")
 
 [autoload]
 
