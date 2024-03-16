@@ -50,7 +50,7 @@ func _ready():
 	prompt = %Prompt
 	scene_tree = %SceneTree
 	self_label = %SelfLabel
-	prompt.text = expression
+	write_prompt(expression)
 	object = _root()
 	self_label.text = object.to_string()
 	prompt.connect("up",Callable(self,"go_up_in_history"))
@@ -93,7 +93,7 @@ func go_up_in_history():
 			scrolling_history = true
 		else:
 			history_idx = (history_idx + 1) % history.size()
-		prompt.text = history[history_idx].prompt
+		write_prompt(history[history_idx].prompt)
 
 
 func go_down_in_history():
@@ -102,15 +102,20 @@ func go_down_in_history():
 			history_idx = 0
 			scrolling_history = true
 		history_idx = (history_idx - 1) % history.size()
-		prompt.text = history[history_idx].prompt
+		write_prompt(history[history_idx].prompt)
 
 
 func _on_LineEdit_text_entered(new_text):
-	evaluate_expression(new_text)
+	write_prompt(new_text)
+	evaluate_current_prompt()
 
 
 func _on_Button_pressed():
-	evaluate_expression(prompt.text)
+	evaluate_current_prompt()
+
+
+func evaluate_current_prompt():
+	evaluate_expression(current_prompt())
 
 
 func evaluate_expression(a_prompt):
@@ -122,10 +127,14 @@ func evaluate_expression(a_prompt):
 	emit_signal("history_changed", history)
 	clear_prompt()
 
+func current_prompt() -> String:
+	return prompt.text
 
 func clear_prompt():
-	prompt.text = ""
+	write_prompt("")
 
+func write_prompt(new_prompt: String):
+	prompt.text = new_prompt
 
 func execute(a_prompt):
 	if not is_instance_valid(object):
