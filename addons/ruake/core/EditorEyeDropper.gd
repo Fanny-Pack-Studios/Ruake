@@ -1,25 +1,39 @@
 @tool
 extends CanvasLayer
 
+var is_active = false
 var last_focused_control = null
 @onready var mouse_pointer = %MousePointer
 @onready var search_again_timer = %SearchAgainTimer
+@onready var eye_dropper_button: CheckButton = %EyeDropperButton
+
+signal node_selected(node)
 
 func _ready():
+	eye_dropper_button.toggled.connect(func(value):
+		is_active = value
+	)
 	search_again_timer.timeout.connect(func():
 		var newly_focused_control = focused_control(get_viewport().get_mouse_position())
-		if(last_focused_control):
+		if(is_instance_valid(last_focused_control)):
 			last_focused_control.modulate = Color.WHITE
+		if(not is_active): return
 		if newly_focused_control is Control:
 			newly_focused_control.modulate = Color.GREEN
 			last_focused_control = newly_focused_control
-		print(newly_focused_control)
-		if(newly_focused_control is Control):
-			print(newly_focused_control.visible)
-			print(newly_focused_control.z_index)
 	)
 
+func _input(event):
+	if event is InputEventMouseButton and is_active:
+		var click_event = event as InputEventMouseButton
+		if(click_event.pressed and click_event.button_index == MOUSE_BUTTON_LEFT):
+			get_viewport().set_input_as_handled()
+			if(last_focused_control):
+				node_selected.emit(last_focused_control)
+			eye_dropper_button.button_pressed = false
+
 func _physics_process(delta):
+	mouse_pointer.visible = is_active
 	var mouse_position = get_viewport().get_mouse_position()
 	mouse_pointer.global_position = mouse_position
 

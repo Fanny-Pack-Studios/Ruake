@@ -2,9 +2,13 @@
 extends Control
 
 @onready var repl = %REPL
+@onready var editor_eye_dropper = %EditorEyeDropper
 
 func _ready():
 	EditorInterface.get_selection().selection_changed.connect(self.on_selection_changed)
+	editor_eye_dropper.node_selected.connect(func(node):
+		repl._set_object(node)
+	)
 
 func on_selection_changed():
 	var selected_nodes = EditorInterface.get_selection().get_selected_nodes()
