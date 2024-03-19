@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://dll3rm5wi8rci"]
+
+[ext_resource type="Theme" uid="uid://bvwsinxv23xsm" path="res://addons/ruake/core/debug_theme.tres" id="1_00vo0"]
+[ext_resource type="Script" path="res://addons/ruake/core/Ruake.gd" id="2_4su81"]
+[ext_resource type="PackedScene" uid="uid://cusxs75017g44" path="res://addons/ruake/core/REPL/REPL.tscn" id="3_7e7ie"]
+
+[node name="Ruake" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme = ExtResource("1_00vo0")
+script = ExtResource("2_4su81")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+offset_bottom = 342.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="REPL" parent="HBoxContainer" instance=ExtResource("3_7e7ie")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Refresh"
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/PanelContainer"]
+layout_mode = 2
+
+[node name="SearchPrompt" type="LineEdit" parent="HBoxContainer/VBoxContainer2/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ExactSearchMatch" type="CheckBox" parent="HBoxContainer/VBoxContainer2/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "Exact Match"
+
+[node name="SceneTree" type="Tree" parent="HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer2/Button" to="." method="_update_scene_tree"]
+[connection signal="text_changed" from="HBoxContainer/VBoxContainer2/PanelContainer/HBoxContainer/SearchPrompt" to="." method="_on_SearchPrompt_text_changed"]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer2/PanelContainer/HBoxContainer/ExactSearchMatch" to="." method="_on_ExactSearchMatch_toggled"]
+[connection signal="item_selected" from="HBoxContainer/VBoxContainer2/SceneTree" to="." method="_on_Tree_item_selected"]
+
+[editable path="HBoxContainer/REPL"]

@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://din1aj8sfxhlk"]
+
+[ext_resource type="Script" path="res://addons/ruake/core/REPL/InEditorREPL.gd" id="1_vxaw6"]
+[ext_resource type="PackedScene" uid="uid://cusxs75017g44" path="res://addons/ruake/core/REPL/REPL.tscn" id="2_1f052"]
+[ext_resource type="Script" path="res://addons/ruake/core/EditorEyeDropper.gd" id="2_ubjgs"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_3o8jm"]
+radius = 12.5
+height = 25.0
+
+[node name="InEditorRepl" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vxaw6")
+
+[node name="EditorEyeDropper" type="CanvasLayer" parent="."]
+layer = 128
+follow_viewport_enabled = true
+script = ExtResource("2_ubjgs")
+
+[node name="MousePointer" type="MeshInstance2D" parent="EditorEyeDropper"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.392157)
+self_modulate = Color(1, 1, 0.752941, 1)
+top_level = true
+position = Vector2(1013.97, 1452.11)
+mesh = SubResource("SphereMesh_3o8jm")
+
+[node name="SearchAgainTimer" type="Timer" parent="EditorEyeDropper"]
+unique_name_in_owner = true
+wait_time = 0.1
+autostart = true
+
+[node name="REPL" parent="." instance=ExtResource("2_1f052")]
+unique_name_in_owner = true
+layout_mode = 1

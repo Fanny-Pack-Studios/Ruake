@@ -42,6 +42,36 @@ func test_assert_ruake_prompt_remembers_previous_prompts():
 	
 	assert_eq(ruake.current_prompt(), "2 + 2")
 
+func test_assert_ruake_going_up_returns_the_latest_evaluated_prompt():
+	var ruake = create_ruake()
+	ruake.write_prompt("2 + 2")
+	ruake.evaluate_current_prompt()
+	ruake.write_prompt("42")
+	ruake.evaluate_current_prompt()
+	
+	ruake.go_up_in_history()
+	
+	assert_eq(ruake.current_prompt(), "42")
+	
+func test_assert_ruake_going_up_after_evaluating_a_prompt_returns_the_latest_evaluated_prompt_even_if_going_up_was_used_before():
+	var ruake = create_ruake()
+	ruake.write_prompt("1")
+	ruake.evaluate_current_prompt()
+	
+	ruake.go_up_in_history()
+
+	ruake.write_prompt("2")
+	ruake.evaluate_current_prompt()
+	
+	ruake.go_up_in_history()
+
+	ruake.write_prompt("3")
+	ruake.evaluate_current_prompt()
+	
+	ruake.go_up_in_history()
+	
+	assert_eq(ruake.current_prompt(), "3")
+
 func test_assert_ruake_prompt_history_remembers_several_prompts():
 	var ruake = create_ruake()
 	ruake.write_prompt("2 + 2")

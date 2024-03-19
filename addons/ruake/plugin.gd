@@ -1,6 +1,10 @@
 @tool
 extends EditorPlugin
 
+const IN_EDITOR_REPL = preload("res://addons/ruake/core/REPL/InEditorREPL.tscn")
+
+var ruake_bottom_menu
+
 func _enter_tree():
 	for setting_path in Ruake.SETTINGS_WITH_DEFAULTS:
 		if(not ProjectSettings.has_setting(setting_path)):
@@ -13,7 +17,13 @@ func _enter_tree():
 		"RuakeLayer",
 		"res://addons/ruake/core/RuakeLayer.tscn"
 	)
+	ruake_bottom_menu = IN_EDITOR_REPL.instantiate()
+	#ruake_bottom_menu = Button.new()
+	#ruake_bottom_menu.pressed.connect(func(): print("a"))
+	add_control_to_bottom_panel(ruake_bottom_menu, "REPL")
 
 
 func _exit_tree():
 	remove_autoload_singleton("RuakeLayer")
+	remove_control_from_bottom_panel(ruake_bottom_menu)
+	ruake_bottom_menu.queue_free()

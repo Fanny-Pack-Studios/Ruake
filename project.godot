@@ -17,13 +17,9 @@ ruake/toggle_ruake_action="toggle_ruake"
 config/name="Ruake"
 config/features=PackedStringArray("4.2")
 
-[autoload]
-
-RuakeLayer="*res://addons/ruake/core/RuakeLayer.tscn"
-
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gut/plugin.cfg", "res://addons/ruake/plugin.cfg")
+enabled=PackedStringArray("res://addons/gut/plugin.cfg")
 
 [filesystem]
 
