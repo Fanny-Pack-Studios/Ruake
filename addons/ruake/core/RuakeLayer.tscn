@@ -4,4 +4,5 @@
 
 [node name="RuakeLayer" type="CanvasLayer"]
 process_mode = 3
+layer = 10
 script = ExtResource("1_a6cly")
