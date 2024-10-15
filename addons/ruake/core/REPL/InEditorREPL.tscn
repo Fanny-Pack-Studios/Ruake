@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://addons/ruake/core/REPL/REPL.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/ruake/core/REPL/InEditorREPL.gd" type="Script" id=2]
+[ext_resource path="res://addons/ruake/core/REPL/EditorEyeDropper.gd" type="Script" id=3]
+[ext_resource path="res://addons/ruake/core/REPL/ColorPicker.svg" type="Texture" id=4]
+
+[sub_resource type="SphereMesh" id=1]
+radius = 12.5
+height = 25.0
 
 [node name="InEditorREPL" type="Control"]
 anchor_right = 1.0
@@ -9,14 +15,21 @@ anchor_bottom = 1.0
 rect_min_size = Vector2( 0, 100 )
 script = ExtResource( 2 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="EditorEyeDropper" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+script = ExtResource( 3 )
 
-[node name="MousePointer" type="MeshInstance2D" parent="CanvasLayer"]
+[node name="MousePointer" type="MeshInstance2D" parent="EditorEyeDropper"]
 unique_name_in_owner = true
+visible = false
+modulate = Color( 1, 1, 0.752941, 0.392157 )
+position = Vector2( 1722.67, -368.149 )
+mesh = SubResource( 1 )
 
-[node name="SearchAgainTimer" type="Timer" parent="CanvasLayer"]
+[node name="SearchAgainTimer" type="Timer" parent="EditorEyeDropper"]
 unique_name_in_owner = true
+wait_time = 0.1
+autostart = true
 
 [node name="REPL" parent="." instance=ExtResource( 1 )]
 unique_name_in_owner = true
@@ -27,23 +40,36 @@ margin_bottom = 0.0
 
 [node name="RichTextLabel" parent="REPL" index="0"]
 margin_right = 1024.0
-margin_bottom = 576.0
+margin_bottom = 560.0
 rect_min_size = Vector2( 0, 0 )
 
 [node name="HBoxContainer" parent="REPL" index="1"]
-margin_top = 576.0
+margin_top = 560.0
 margin_right = 1024.0
 margin_bottom = 600.0
 
 [node name="SelfLabel" parent="REPL/HBoxContainer" index="0"]
-margin_right = 160.0
+margin_top = 13.0
+margin_right = 154.0
+margin_bottom = 27.0
+text = "REPL"
 
-[node name="Prompt" parent="REPL/HBoxContainer" index="1"]
-margin_left = 164.0
-margin_right = 967.0
+[node name="EyeDropperButton" type="CheckButton" parent="REPL/HBoxContainer" index="1"]
+unique_name_in_owner = true
+margin_left = 158.0
+margin_right = 250.0
+margin_bottom = 40.0
+icon = ExtResource( 4 )
 
-[node name="Watch" parent="REPL/HBoxContainer" index="2"]
-margin_left = 971.0
-margin_right = 1023.0
+[node name="Prompt" parent="REPL/HBoxContainer" index="2"]
+margin_left = 254.0
+margin_right = 1024.0
+margin_bottom = 40.0
+
+[node name="Watch" parent="REPL/HBoxContainer" index="3"]
+visible = false
+margin_left = 891.0
+margin_right = 943.0
+margin_bottom = 40.0
 
 [editable path="REPL"]

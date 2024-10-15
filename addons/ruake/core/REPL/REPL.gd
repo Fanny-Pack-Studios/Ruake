@@ -349,13 +349,19 @@ class Evaluation:
 		print("Result value: ", result_value)
 
 	func write_in(text_label):
-		text_label.text += str("> ", prompt)
-		text_label.text += "\n"
+		var message = ""
+		message += str("> ", prompt)
+		message += "\n"
 		match result_success_state:
 			Success:
-				text_label.text += str(result_value)
+				message += str(result_value)
 			Failure:
-				text_label.text += str(
+				message += str(
 					"[color=red]", result_value, "[/color]"
 				)
-		text_label.text += "\n"
+		message += "\n"
+		
+		if text_label.get("bbcode_enabled"):
+			text_label.bbcode_text = message
+		else:
+			text_label.text = message
