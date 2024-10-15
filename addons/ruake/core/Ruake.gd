@@ -16,6 +16,12 @@ const SETTINGS_WITH_DEFAULTS = {
 	SETTING_PATHS.PAUSES_WHILE_OPENED: true
 }
 
+static func layer() -> int:
+	var value = ProjectSettings.get_setting(SETTING_PATHS.LAYER)
+	if(not value):
+		value = SETTINGS_WITH_DEFAULTS[SETTING_PATHS.LAYER]
+	return value
+
 static func toggle_action_name() -> String:
 	var value = ProjectSettings.get_setting(SETTING_PATHS.TOGGLE_ACTION)
 	if(not value):
