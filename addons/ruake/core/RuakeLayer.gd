@@ -8,10 +8,9 @@ func _ready():
 	var configured_action_name := Ruake.toggle_action_name()
 	if InputMap.has_action(configured_action_name):
 		action_name = configured_action_name
-	layer = Ruake.ruake_layer()
 	_create_ruake()
 	# TODO: save history
-	ruake_menu.history = []
+	#ruake_menu.history = []
 
 
 func _physics_process(_delta):
@@ -20,21 +19,16 @@ func _physics_process(_delta):
 
 func _create_ruake():
 	ruake_menu = RuakeScene.instance()
-	ruake_menu.connect("history_changed", self, "ruake_history_changed")
 
-func ruake_history_changed(new_history):
-	# TODO: save history
-	pass
 
 func toggle_ruake():
 	if not ruake_menu:
 		_create_ruake()
 	if ruake_menu.get_parent() == self:
 		remove_child(ruake_menu)
-		if(Ruake.pauses_while_opened()):
-			get_tree().paused = false
+		get_tree().paused = false
 	else:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		add_child(ruake_menu)
-		if(Ruake.pauses_while_opened()):
-			get_tree().paused = true
-		ruake_menu.grab_focus()
+		get_tree().paused = true
+		ruake_menu.be_focused()

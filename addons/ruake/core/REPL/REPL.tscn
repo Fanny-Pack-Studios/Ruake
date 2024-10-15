@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/ruake/core/Prompt.gd" type="Script" id=1]
+[ext_resource path="res://addons/ruake/core/REPL/REPL.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.176471, 0.176471, 0.176471, 0.901961 )
+border_width_top = 5
+border_width_bottom = 5
+border_color = Color( 0.0705882, 0.0627451, 0.0627451, 1 )
+
+[node name="REPL" type="VBoxContainer"]
+margin_right = 680.0
+margin_bottom = 342.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0
+script = ExtResource( 2 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+margin_right = 680.0
+margin_bottom = 318.0
+rect_min_size = Vector2( 0, 300 )
+focus_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/normal = SubResource( 1 )
+bbcode_enabled = true
+scroll_following = true
+selection_enabled = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_top = 318.0
+margin_right = 680.0
+margin_bottom = 342.0
+
+[node name="SelfLabel" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+margin_top = 5.0
+margin_right = 112.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="Prompt" type="LineEdit" parent="HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 116.0
+margin_right = 680.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "pepita.vola()"
+script = ExtResource( 1 )

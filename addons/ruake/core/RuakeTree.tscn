@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/ruake/core/ruake_tree.gd" type="Script" id=1]
+
+[node name="RuakeTree" type="VBoxContainer"]
+margin_left = 684.0
+margin_right = 1024.0
+margin_bottom = 342.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+script = ExtResource( 1 )
+
+[node name="Refresh" type="Button" parent="."]
+unique_name_in_owner = true
+margin_right = 340.0
+margin_bottom = 20.0
+text = "Refresh"
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_top = 24.0
+margin_right = 340.0
+margin_bottom = 62.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 333.0
+margin_bottom = 31.0
+
+[node name="SearchPrompt" type="LineEdit" parent="PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+margin_right = 218.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="ExactSearchMatch" type="CheckBox" parent="PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 222.0
+margin_right = 326.0
+margin_bottom = 24.0
+text = "Exact Match"
+
+[node name="SceneTree" type="Tree" parent="."]
+unique_name_in_owner = true
+margin_top = 66.0
+margin_right = 340.0
+margin_bottom = 342.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
