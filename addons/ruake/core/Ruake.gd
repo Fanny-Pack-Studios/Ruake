@@ -24,6 +24,7 @@ static func toggle_action_name() -> String:
 
 onready var repl = get_node("%REPL")
 onready var ruake_tree = get_node("%RuakeTree")
+onready var watchers = $"%Watchers"
 
 func _ready():
 	ruake_tree.connect("node_chosen", self, "on_node_chosen")
@@ -31,9 +32,13 @@ func _ready():
 	be_focused()
 	repl.history = HISTORY_SAVER.read()
 	repl.connect("history_changed", self, "on_history_changed")
+	repl.connect("watch_requested", self, "on_watch_requested")
 
 func on_history_changed(new_history):
 	HISTORY_SAVER.write(new_history)
+
+func on_watch_requested(expression):
+	watchers.add_watcher_for(expression.object, expression)
 
 func be_focused():
 	ruake_tree.update_scene_tree()
@@ -59,3 +64,9 @@ func go_down_in_history() -> void:
 
 func _set_object(an_object):
 	repl._set_object(an_object)
+
+func variables_names():
+	return repl.variables_names()
+
+func variables_values():
+	return repl.variables_values()

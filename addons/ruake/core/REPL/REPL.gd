@@ -12,7 +12,9 @@ var variables = {}
 onready var rich_text_label = get_node("%RichTextLabel")
 onready var self_label = get_node("%SelfLabel")
 onready var prompt = get_node("%Prompt")
+onready var watch = $"%Watch"
 
+signal watch_requested(expression)
 
 func variables_names():
 	return variables.keys()
@@ -22,8 +24,8 @@ func variables_values():
 
 func initialize_godot_singletons():
 	var singletons = {
-		"ClassDB": ClassDB,
-		"EditorInterface": EditorInterface
+		"ClassDB": ClassDB
+#		"EditorInterface": EditorInterface THIS BREAKS export builds
 	}
 	for singleton_name in singletons:
 		variables[singleton_name] = singletons[singleton_name]
@@ -53,10 +55,18 @@ func _ready():
 	prompt.connect("up", self,"go_up_in_history")
 	prompt.connect("down", self,"go_down_in_history")
 	prompt.connect("text_entered", self, "on_prompt_submitted")
+	watch.connect("pressed", self, "on_watch_requested")
 	be_focused()
 
 func on_prompt_submitted(_new_text):
 	evaluate_current_prompt()
+
+func on_watch_requested():
+	emit_signal(
+		"watch_requested",
+		RuakeExpression.for_prompt(object, current_prompt())
+	)
+	clear_prompt()
 
 func be_focused():
 	prompt.grab_focus()
@@ -318,6 +328,14 @@ class Evaluation:
 
 	func is_failure():
 		return result_success_state == Failure
+
+	static func from_dict(dict):
+		return Evaluation.new(
+			null,
+			dict["prompt"],
+			dict["result_value"],
+			dict["result_value_success_state"]
+		)
 
 	func serialized():
 		return {

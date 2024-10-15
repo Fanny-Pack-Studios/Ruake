@@ -1,6 +1,6 @@
 tool
 extends Object
-
+const REPL = preload("res://addons/ruake/core/REPL/REPL.gd")
 const HISTORY_PATH := "user://ruake_history.txt"
 
 static func write(history: Array) -> void:
@@ -26,4 +26,7 @@ static func read() -> Array:
 	if(parse_result.error != OK):
 		return []
 
-	return parse_result.result
+	var history = []
+	for result in parse_result.result:
+		history.push_back(REPL.Evaluation.from_dict(result))
+	return history

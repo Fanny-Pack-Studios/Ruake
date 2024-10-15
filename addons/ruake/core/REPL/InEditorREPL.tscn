@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/ruake/core/REPL/REPL.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/ruake/core/REPL/InEditorREPL.gd" type="Script" id=2]
+
+[node name="InEditorREPL" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 0, 100 )
+script = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="MousePointer" type="MeshInstance2D" parent="CanvasLayer"]
+unique_name_in_owner = true
+
+[node name="SearchAgainTimer" type="Timer" parent="CanvasLayer"]
+unique_name_in_owner = true
+
+[node name="REPL" parent="." instance=ExtResource( 1 )]
+unique_name_in_owner = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="RichTextLabel" parent="REPL" index="0"]
+margin_right = 1024.0
+margin_bottom = 576.0
+rect_min_size = Vector2( 0, 0 )
+
+[node name="HBoxContainer" parent="REPL" index="1"]
+margin_top = 576.0
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="SelfLabel" parent="REPL/HBoxContainer" index="0"]
+margin_right = 160.0
+
+[node name="Prompt" parent="REPL/HBoxContainer" index="1"]
+margin_left = 164.0
+margin_right = 967.0
+
+[node name="Watch" parent="REPL/HBoxContainer" index="2"]
+margin_left = 971.0
+margin_right = 1023.0
+
+[editable path="REPL"]

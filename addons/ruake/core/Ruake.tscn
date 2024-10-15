@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://addons/ruake/core/debug_theme.tres" type="Theme" id=1]
 [ext_resource path="res://addons/ruake/core/Ruake.gd" type="Script" id=2]
 [ext_resource path="res://addons/ruake/core/REPL/REPL.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/ruake/core/RuakeTree.tscn" type="PackedScene" id=4]
+[ext_resource path="res://addons/ruake/core/watchers.gd" type="Script" id=5]
 
 [node name="Ruake" type="Control"]
 anchor_right = 1.0
@@ -24,3 +25,17 @@ unique_name_in_owner = true
 
 [node name="RuakeTree" parent="HBoxContainer" instance=ExtResource( 4 )]
 unique_name_in_owner = true
+
+[node name="Watchers" type="Control" parent="."]
+pause_mode = 2
+unique_name_in_owner = true
+margin_left = 689.0
+margin_top = 348.0
+margin_right = 729.0
+margin_bottom = 388.0
+script = ExtResource( 5 )
+
+[node name="WatchList" type="ItemList" parent="Watchers"]
+unique_name_in_owner = true
+margin_right = 321.0
+margin_bottom = 218.0

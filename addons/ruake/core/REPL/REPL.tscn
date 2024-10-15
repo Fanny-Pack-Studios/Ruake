@@ -38,17 +38,24 @@ margin_bottom = 342.0
 [node name="SelfLabel" type="Label" parent="HBoxContainer"]
 unique_name_in_owner = true
 margin_top = 5.0
-margin_right = 112.0
+margin_right = 103.0
 margin_bottom = 19.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.2
+text = "root"
 
 [node name="Prompt" type="LineEdit" parent="HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 116.0
-margin_right = 680.0
+margin_left = 107.0
+margin_right = 623.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "pepita.vola()"
 script = ExtResource( 1 )
+
+[node name="Watch" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 627.0
+margin_right = 679.0
+margin_bottom = 24.0
+text = "Watch"
