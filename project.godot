@@ -8,6 +8,10 @@
 
 config_version=5
 
+[addons]
+
+ruake/pauses_tree_while_opened=false
+
 [application]
 
 config/name="Ruake"

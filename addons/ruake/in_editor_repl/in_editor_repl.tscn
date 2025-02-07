@@ -43,7 +43,7 @@ unique_name_in_owner = true
 layout_mode = 1
 
 [node name="SelfLabel" parent="REPL/HBoxContainer" index="0"]
-text = "RuakeLayer"
+text = "AnimationPlayer"
 
 [node name="EyeDropperButton" type="CheckButton" parent="REPL/HBoxContainer" index="1"]
 unique_name_in_owner = true

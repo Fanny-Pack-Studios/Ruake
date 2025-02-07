@@ -30,11 +30,13 @@ func toggle_ruake():
 	var is_opened = ruake.is_inside_tree()
 	if is_opened:
 		remove_child(ruake)
-		get_tree().paused = false
+		if Ruake.pauses_while_opened():
+			get_tree().paused = false
 		ruake_closed.emit()
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		add_child(ruake)
-		get_tree().paused = true
+		if Ruake.pauses_while_opened():
+			get_tree().paused = true
 		ruake.be_focused()
 		ruake_opened.emit()
