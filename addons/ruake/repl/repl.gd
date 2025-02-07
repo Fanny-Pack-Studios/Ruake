@@ -42,7 +42,8 @@ func initialize_godot_singletons():
 	# TODO: add more singletons
 	var singletons = {
 		"ClassDB": ClassDB,
-		"EditorInterface": EditorInterface
+		"EditorInterface": EditorInterface,
+		"ProjectSettings": ProjectSettings
 	}
 	for singleton_name in singletons:
 		variables[singleton_name] = singletons[singleton_name]

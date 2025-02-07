@@ -30,7 +30,7 @@ visible = false
 modulate = Color(1, 1, 1, 0.392157)
 self_modulate = Color(1, 1, 0.752941, 1)
 top_level = true
-position = Vector2(-22.4999, -234.5)
+position = Vector2(361.5, -230)
 mesh = SubResource("SphereMesh_3o8jm")
 
 [node name="SearchAgainTimer" type="Timer" parent="EditorEyeDropper"]
