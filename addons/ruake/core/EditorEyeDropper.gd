@@ -61,4 +61,3 @@ func _focused_control(mouse_position: Vector2, current_result: Node, node_to_sea
 				new_result = result_node
 
 	return new_result
-

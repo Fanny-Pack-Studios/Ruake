@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dll3rm5wi8rci"]
 
 [ext_resource type="Theme" uid="uid://bvwsinxv23xsm" path="res://addons/ruake/core/debug_theme.tres" id="1_00vo0"]
-[ext_resource type="Script" path="res://addons/ruake/core/Ruake.gd" id="2_4su81"]
+[ext_resource type="Script" uid="uid://djlscxe111mh7" path="res://addons/ruake/core/Ruake.gd" id="2_4su81"]
 [ext_resource type="PackedScene" uid="uid://cusxs75017g44" path="res://addons/ruake/core/REPL/REPL.tscn" id="3_7e7ie"]
 [ext_resource type="PackedScene" uid="uid://8vrja2xd10v4" path="res://addons/ruake/core/RuakeTree.tscn" id="4_6dnti"]
 

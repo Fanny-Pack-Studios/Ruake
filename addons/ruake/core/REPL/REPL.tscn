@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cusxs75017g44"]
 
-[ext_resource type="Script" path="res://addons/ruake/core/Prompt.gd" id="1_1qi8p"]
-[ext_resource type="Script" path="res://addons/ruake/core/REPL/REPL.gd" id="1_h68gu"]
+[ext_resource type="Script" uid="uid://bpqulue68l8br" path="res://addons/ruake/core/Prompt.gd" id="1_1qi8p"]
+[ext_resource type="Script" uid="uid://ct4vevqfvb0e6" path="res://addons/ruake/core/REPL/REPL.gd" id="1_h68gu"]
 
 [node name="REPL" type="VBoxContainer"]
 anchors_preset = 15
@@ -31,7 +31,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.2
-text = "root:<Window#25954354217>"
+text = "root"
 
 [node name="Prompt" type="LineEdit" parent="HBoxContainer"]
 unique_name_in_owner = true

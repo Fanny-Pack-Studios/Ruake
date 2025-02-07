@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://8vrja2xd10v4"]
 
-[ext_resource type="Script" path="res://addons/ruake/core/RuakeTree.gd" id="1_xabag"]
+[ext_resource type="Script" uid="uid://bnrhllwc5rl0w" path="res://addons/ruake/core/RuakeTree.gd" id="1_xabag"]
 
 [node name="RuakeTree" type="VBoxContainer"]
 size_flags_horizontal = 3
