@@ -53,5 +53,3 @@ func test_assert_ruake_prompt_history_remembers_several_prompts():
 	assert_eq(ruake.current_prompt(), "'This is the pencil of Esther Piscore.'")
 	ruake.go_up_in_history()
 	assert_eq(ruake.current_prompt(), "2 + 2")
-
-

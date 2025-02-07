@@ -13,4 +13,3 @@ func _gui_input(event):
 		if event.is_action_pressed("ui_down"):
 			accept_event()
 			emit_signal("down")
-

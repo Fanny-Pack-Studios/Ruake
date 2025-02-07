@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dljui8nhf861w"]
+
+[node name="ExampleScene" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 171.0
+offset_top = 127.0
+offset_right = 871.0
+offset_bottom = 334.0
+text = "Press Ctrl+1 to Open Ruake"
