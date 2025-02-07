@@ -1,8 +1,13 @@
 [gd_scene load_steps=2 format=3 uid="uid://8vrja2xd10v4"]
 
-[ext_resource type="Script" uid="uid://bnrhllwc5rl0w" path="res://addons/ruake/core/RuakeTree.gd" id="1_xabag"]
+[ext_resource type="Script" uid="uid://bnrhllwc5rl0w" path="res://addons/ruake/scene_tree/ruake_tree.gd" id="1_xabag"]
 
 [node name="RuakeTree" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 script = ExtResource("1_xabag")

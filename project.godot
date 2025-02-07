@@ -10,16 +10,17 @@ config_version=5
 
 [addons]
 
-ruake/toggle_ruake_action="toggle_ruake"
+ruake/layer=-10
 
 [application]
 
 config/name="Ruake"
+run/main_scene="uid://dljui8nhf861w"
 config/features=PackedStringArray("4.4")
 
 [autoload]
 
-RuakeLayer="*res://addons/ruake/core/RuakeLayer.tscn"
+RuakeLayer="*res://addons/ruake/ruake/ruake_layer.tscn"
 
 [editor_plugins]
 

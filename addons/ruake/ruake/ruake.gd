@@ -20,6 +20,18 @@ static func toggle_action_name() -> String:
 		SETTINGS_WITH_DEFAULTS[SETTING_PATHS.TOGGLE_ACTION]
 	)
 
+static func layer() -> int:
+	return ProjectSettings.get_setting(
+		SETTING_PATHS.LAYER,
+		SETTINGS_WITH_DEFAULTS[SETTING_PATHS.LAYER]
+	)
+
+static func pauses_while_opened() -> bool:
+	return ProjectSettings.get_setting(
+		SETTING_PATHS.PAUSES_WHILE_OPENED,
+		SETTINGS_WITH_DEFAULTS[SETTING_PATHS.PAUSES_WHILE_OPENED]
+	)
+
 @onready var repl = %REPL
 @onready var ruake_tree = %RuakeTree
 

@@ -1,7 +1,7 @@
 @tool
 extends VBoxContainer
 
-const RmScene = preload("res://addons/ruake/core/rm_scene.gd")
+const RmScene = preload("res://addons/ruake/scene_tree/rm_scene.gd")
 
 var filter_text = ""
 var filter_exact_match = false

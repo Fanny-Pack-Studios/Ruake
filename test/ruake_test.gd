@@ -1,6 +1,6 @@
 extends GutTest
 
-const RUAKE = preload("res://addons/ruake/core/Ruake.tscn")
+const RUAKE = preload("res://addons/ruake/ruake/ruake.tscn")
 
 func before_each():
 	gut.p("ran setup", 2)
