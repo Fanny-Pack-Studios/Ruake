@@ -1,7 +1,9 @@
-# Ruake
+# Ruake + REPL
 
 This addon includes:
+
 	- a terminal that runs godot expressions using nodes from the running scene as context.
+
 	- a REPL that's available in the editor.
 
 This can be used to debug while the game is running:
