@@ -50,6 +50,8 @@ func be_focused():
 
 func on_node_chosen(node):
 	_set_object(node)
+	repl.be_focused()
+	repl.select_all()
 
 func write_prompt(new_prompt: String):
 	repl.write_prompt(new_prompt)

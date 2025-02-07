@@ -82,6 +82,9 @@ func on_prompt_submitted(_new_text):
 func be_focused():
 	prompt.grab_focus()
 
+func select_all():
+	prompt.select_all()
+
 func _root():
 	return get_node("/root")
 
