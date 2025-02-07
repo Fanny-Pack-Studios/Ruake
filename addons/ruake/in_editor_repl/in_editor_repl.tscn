@@ -30,7 +30,7 @@ visible = false
 modulate = Color(1, 1, 1, 0.392157)
 self_modulate = Color(1, 1, 0.752941, 1)
 top_level = true
-position = Vector2(1219.5, 614.501)
+position = Vector2(-22.4999, -234.5)
 mesh = SubResource("SphereMesh_3o8jm")
 
 [node name="SearchAgainTimer" type="Timer" parent="EditorEyeDropper"]
@@ -43,7 +43,7 @@ unique_name_in_owner = true
 layout_mode = 1
 
 [node name="SelfLabel" parent="REPL/HBoxContainer" index="0"]
-text = "ExampleScene"
+text = "Ruake"
 
 [node name="EyeDropperButton" type="CheckButton" parent="REPL/HBoxContainer" index="1"]
 unique_name_in_owner = true

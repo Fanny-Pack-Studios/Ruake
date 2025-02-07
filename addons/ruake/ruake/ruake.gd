@@ -2,6 +2,8 @@
 class_name Ruake
 extends Control
 
+const HISTORY_SAVE_FILE_PATH = "user://ruake_in_game_history.txt"
+
 const SETTING_PATHS = {
 	TOGGLE_ACTION = "addons/ruake/toggle_ruake_action",
 	LAYER = "addons/ruake/layer",
@@ -36,6 +38,8 @@ static func pauses_while_opened() -> bool:
 @onready var ruake_tree = %RuakeTree
 
 func _ready():
+	repl.history_filepath = HISTORY_SAVE_FILE_PATH
+	repl.load_history()
 	ruake_tree.node_chosen.connect(Callable(self, "on_node_chosen"))
 	_set_object(ruake_tree.root_node())
 	be_focused()

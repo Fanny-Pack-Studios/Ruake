@@ -1,11 +1,13 @@
 @tool
-extends Control
+class_name REPL extends Control
 
 signal history_changed(complete_history)
 
+var history_filepath: String = ""
+
 var object
 var expression = ""
-var history = []
+var history: Array = []
 var history_idx = 0
 var scrolling_history = false
 var variables = {}
@@ -13,6 +15,22 @@ var variables = {}
 @onready var self_label = %SelfLabel
 @onready var prompt = %Prompt
 
+func load_history():
+	history = []
+	if history_filepath:
+		var history_file := FileAccess.open(history_filepath, FileAccess.READ)
+		if not history_file:
+			history_file = FileAccess.open(history_filepath, FileAccess.WRITE_READ)
+		var content := history_file.get_as_text()
+		while not history_file.eof_reached():
+			history.push_back(history_file.get_line())
+
+
+func save_history():
+	if history_filepath:
+		var history_file = FileAccess.open(history_filepath, FileAccess.WRITE)
+		for line in history:
+			history_file.store_line(line)
 
 func variables_names():
 	return variables.keys()
@@ -21,6 +39,7 @@ func variables_values():
 	return variables.values()
 
 func initialize_godot_singletons():
+	# TODO: add more singletons
 	var singletons = {
 		"ClassDB": ClassDB,
 		"EditorInterface": EditorInterface
@@ -46,6 +65,7 @@ class Constructor:
 		return ClassDB.instantiate(klass_name)
 
 func _ready():
+	load_history()
 	initialize_godot_singletons()
 	initialize_constructors()
 	write_prompt(expression)
@@ -77,7 +97,7 @@ func go_up_in_history():
 			scrolling_history = true
 		else:
 			history_idx = (history_idx + 1) % history.size()
-		write_prompt(history[history_idx].prompt)
+		write_prompt(history[history_idx])
 
 func go_down_in_history():
 	if not history.is_empty():
@@ -85,7 +105,7 @@ func go_down_in_history():
 			history_idx = 0
 			scrolling_history = true
 		history_idx = (history_idx - 1) % history.size()
-		write_prompt(history[history_idx].prompt)
+		write_prompt(history[history_idx])
 
 func _on_LineEdit_text_entered(new_text):
 	write_prompt(new_text)
@@ -105,9 +125,10 @@ func evaluate_expression(a_prompt):
 
 	evaluation.print()
 	evaluation.write_in(rich_text_label)
-	history.push_front(evaluation)
+	history.push_front(evaluation.prompt)
 	history_idx = history.size() - 1
 	emit_signal("history_changed", history)
+	save_history()
 	clear_prompt()
 
 func current_prompt() -> String:

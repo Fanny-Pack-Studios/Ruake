@@ -1,10 +1,14 @@
 @tool
 extends Control
 
-@onready var repl = %REPL
+const HISTORY_SAVE_FILE_PATH = "user://repl_history.txt"
+
+@onready var repl: REPL = %REPL
 @onready var editor_eye_dropper = %EditorEyeDropper
 
 func _ready():
+	repl.history_filepath = HISTORY_SAVE_FILE_PATH
+	repl.load_history()
 	EditorInterface.get_selection().selection_changed.connect(self.on_selection_changed)
 	editor_eye_dropper.node_selected.connect(func(node):
 		repl._set_object(node)

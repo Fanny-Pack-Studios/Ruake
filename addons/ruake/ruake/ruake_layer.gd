@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-var ruake_menu
+var ruake: Ruake
 const RuakeScene = preload("./Ruake.tscn")
 var action_name
 
@@ -18,18 +18,19 @@ func _physics_process(_delta):
 	if action_name and Input.is_action_just_pressed(action_name):
 		toggle_ruake()
 
+
 func _create_ruake():
-	ruake_menu = RuakeScene.instantiate()
+	ruake = RuakeScene.instantiate()
 
 
 func toggle_ruake():
-	if not ruake_menu:
+	if not ruake:
 		_create_ruake()
-	if ruake_menu.get_parent() == self:
-		remove_child(ruake_menu)
+	if ruake.get_parent() == self:
+		remove_child(ruake)
 		get_tree().paused = false
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		add_child(ruake_menu)
+		add_child(ruake)
 		get_tree().paused = true
-		ruake_menu.be_focused()
+		ruake.be_focused()
