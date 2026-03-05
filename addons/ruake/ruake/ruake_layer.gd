@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 var ruake: Ruake
-const RuakeScene = preload("./Ruake.tscn")
+const RuakeScene = preload("./ruake.tscn")
 var action_name
 
 signal ruake_opened
